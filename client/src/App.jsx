@@ -1,8 +1,15 @@
-import React from 'react'
-
+import {BrowserRouter , Routes, Route} from 'react-router-dom'
+import Profile from './pages/profile'
+import About from './pages/about'
 const App = () => {
   return (
-    <div className=' underline'>App</div>
+    // wrap home and about in a router
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Profile />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
