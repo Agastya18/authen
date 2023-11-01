@@ -5,7 +5,7 @@ const SignUp = () => {
   const [name,setName]= useState("")
   const [pass,setPass]= useState("")
   const [email,setEmail]= useState("")
-  const [loading,setLoading]= useState("")
+  
   const handleSubmit=async(e)=>{
     e.preventDefault()
     console.log(name,pass,email)
