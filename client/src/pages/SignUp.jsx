@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link ,useNavigate} from "react-router-dom"
 import axios from 'axios'
 const SignUp = () => {
   const [name,setName]= useState("")
   const [pass,setPass]= useState("")
   const [email,setEmail]= useState("")
-  
+  const navigate = useNavigate()
   const handleSubmit=async(e)=>{
     e.preventDefault()
     console.log(name,pass,email)
@@ -23,7 +23,7 @@ const SignUp = () => {
      
       const res= await axios.post('/api/signup',userData)
       console.log(res.data)
-    
+      navigate('/signin')
     } catch (error) {
    
       console.log(error)

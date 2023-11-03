@@ -25,6 +25,7 @@ Secret='abcdefghijklmnopqrstuvwxyz'
 }
 const signin = async(req,res)=>{
  const { password, email } = req.body;
+ console.log(email,password)
  try {
     const verifyUser = await User.findOne({email:email})
     if(!verifyUser){
@@ -36,7 +37,7 @@ const signin = async(req,res)=>{
     }
     const token = jwt.sign({id:verifyUser._id},Secret)
     const expireTime = new Date(Date.now() + 3600000)
-    res.cookie('Access_token', token, { httpOnly: true,expires:expireTime }).status(200).json({message:"User logged in successfully",token})
+    res.cookie('Access_token', token, { httpOnly: true,expires:expireTime }).status(200).json({message:"User logged in successfully",token,verifyUser})
  } catch (error) {
     console.log(error);
  }
