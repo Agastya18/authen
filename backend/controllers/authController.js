@@ -1,5 +1,7 @@
 const  User = require( "../models/userModel.js");
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+Secret='abcdefghijklmnopqrstuvwxyz'
  const signup = async (req, res) => {
     
     const { name, email, password } = req.body;
@@ -22,20 +24,23 @@ const bcrypt = require('bcryptjs');
     }
 }
 const signin = async(req,res)=>{
- const { name, email } = req.body;
+ const { password, email } = req.body;
  try {
     const verifyUser = await User.findOne({email:email})
     if(!verifyUser){
-        res.status(400).json({error:"User not found"})
+       return  res.status(400).json({error:"User not found"})
     }
     const verifyPassword = bcrypt.compareSync(password, verifyUser.password);
     if(!verifyPassword){
-        res.status(400).json({error:"Invalid credentials"})
+        return res.status(400).json({error:"Invalid credentials"})
     }
+    const token = jwt.sign({id:verifyUser._id},Secret)
+    const expireTime = new Date(Date.now() + 3600000)
+    res.cookie('Access_token', token, { httpOnly: true,expires:expireTime }).status(200).json({message:"User logged in successfully",token})
  } catch (error) {
     console.log(error);
  }
    
 
 }
-module.exports = {signup}
+module.exports = {signup,signin}

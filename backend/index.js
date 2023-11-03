@@ -2,7 +2,7 @@ const path=require('path');
 require('dotenv').config({path:path.resolve(__dirname, './.env')});
 const express = require('express');
 const app = express();
-const userRoutes = require('./routes/userRoutes.js')
+const userRoutes = require('./routes/authRoutes.js')
 const connectDB = require('./database/db');
 connectDB();
 app.use(express.json());
