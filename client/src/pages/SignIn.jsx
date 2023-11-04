@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { Link ,useNavigate} from "react-router-dom"
 import axios from 'axios'
-
+import { signInSuccess } from '../redux/user/userSlice'
+import { useDispatch } from 'react-redux'
 const SignIn = () => {
- 
+   const dispatch = useDispatch()
   const [pass,setPass]= useState("")
   const [email,setEmail]= useState("")
   const navigate = useNavigate()
@@ -24,6 +25,7 @@ const SignIn = () => {
      
       const res= await axios.post('/api/signin',userData)
       console.log(res.data)
+      dispatch(signInSuccess(res.data.verifyUser))
        navigate('/')
     } catch (error) {
    
