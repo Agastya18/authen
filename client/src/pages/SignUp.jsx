@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast';
 import { Link ,useNavigate} from "react-router-dom"
 import axios from 'axios'
 const SignUp = () => {
@@ -23,6 +24,7 @@ const SignUp = () => {
      
       const res= await axios.post('/api/signup',userData)
       console.log(res.data)
+      toast.success("user created successfully")
       navigate('/signin')
     } catch (error) {
    
