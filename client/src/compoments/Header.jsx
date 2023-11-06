@@ -14,7 +14,7 @@ const Header = () => {
                <Link to={"/about"}><li>About</li></Link> 
                <Link  to="/Signin"> 
                {currentUser ? (
-                <img src={currentUser.profilePic} className=" h-10 w-10 rounded-full"/>
+                <img src={currentUser.profilePic} className=" h-10 w-10 rounded-full object-cover"/>
                ):( <li>Sign In</li>)}
                
               
