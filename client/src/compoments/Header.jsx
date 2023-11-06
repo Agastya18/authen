@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 
 const Header = () => {
   const currentUser= useSelector(state=>state.persistedReducer.user.currentUser)
-  console.log(currentUser.profilePic)
+  console.log(currentUser)
   return (
     <div className=' bg-slate-200'>
         <div className=" flex  justify-around">
