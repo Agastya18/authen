@@ -12,13 +12,14 @@ const Header = () => {
             <Link to={"/"}> <li>Home</li></Link>
               
                <Link to={"/about"}><li>About</li></Link> 
-               <Link  to="/Signin"> 
+               <Link  to="/profile"> 
                {currentUser ? (
                 <img src={currentUser.profilePic} className=" h-10 w-10 rounded-full object-cover"/>
                ):( <li>Sign In</li>)}
                
               
                </Link>
+              
                
             </ul>
         </div>

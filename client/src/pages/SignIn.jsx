@@ -26,7 +26,7 @@ const SignIn = () => {
       const res= await axios.post('/api/signin',userData)
       console.log(res.data)
       dispatch(signInSuccess(res.data.verifyUser))
-       navigate('/')
+       navigate('/profile')
     } catch (error) {
    
       console.log(error)
