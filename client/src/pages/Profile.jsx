@@ -7,8 +7,8 @@ const Profile = () => {
   const [imagePercent, setImagePercent] = useState(0);
   const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({});
-  console.log(formData)
-  console.log(image)
+  // console.log(formData)
+  // console.log(image)
   const fileRef = useRef(null);
   const currentUser = useSelector(
     (state) => state.persistedReducer.user.currentUser
