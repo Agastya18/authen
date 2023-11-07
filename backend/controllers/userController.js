@@ -19,4 +19,15 @@ const updateUser= async(req,res,next)=>{
         console.log(error)
     }
 }
-module.exports =  {updateUser}
+const deleteUser= async(req,res,next)=>{
+    if(req.user.id!=req.params.id){
+        res.status(401).json({error:"You are not authorized to delete this user"})
+    }
+    try {
+        const deletedUser= await User.findByIdAndDelete(req.params.id)
+      res.status(200).json({message:"User deleted successfully",deletedUser})
+    } catch (error) {
+        console.log(error)
+    }
+}
+module.exports =  {updateUser,deleteUser}
